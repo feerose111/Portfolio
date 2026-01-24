@@ -1,0 +1,59 @@
+.mode-dots {
+  position: fixed;
+  bottom: 2.2rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  
+  width: fit-content;           /* ← very important */
+  padding: 0 1rem;              /* breathing room on small screens */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;      /* extra centering safety */
+  gap: 14px;
+  
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Base dot */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  transition: all 0.35s ease;
+}
+
+/* Active dot */
+.dot.active {
+  background-color: #5da9e9;
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px rgba(93, 169, 233, 0.28);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .mode-dots {
+    bottom: 1.6rem;
+    gap: 10px;
+    padding: 0 12px;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .dot.active {
+    transform: scale(1.35);
+  }
+}
+
+/* Very important for modern phones (notch, dynamic island, gesture bar) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mode-dots {
+    bottom: calc(1.6rem + env(safe-area-inset-bottom));
+  }
+}

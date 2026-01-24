@@ -1,0 +1,48 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Clash+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:ital,wght@0,400;1,400&display=swap');
+
+.story-mode {
+  background-color: #12263A;
+  color: #FFFFFF;
+}
+
+@supports not (height: 100dvh){
+  .story-mode,
+  .story-section {
+    min-height: 100vh;
+  }
+}
+
+.story-section {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 10vh, 80px) clamp(16px, 5vw, 20px);
+  box-sizing: border-box;
+}
+
+.story-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.story-heading {
+  font-family: 'Clash Grotesk', sans-serif;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: clamp(20px, 4vh, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.story-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}

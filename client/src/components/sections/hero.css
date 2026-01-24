@@ -1,0 +1,120 @@
+/* Hero Section Specific Styles */
+
+/* hero.css - Elegant hanging tab style */
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+/* Contact Button - Fixed at top center */
+.contact-button {
+  position: fixed;
+  top: -20px;
+  inset-inline: 0;              
+  margin-inline: auto;
+
+  z-index: 100;
+  cursor: pointer;
+  width: 70px;
+  height: 80px;
+}
+
+
+/* SVG effects */
+.contact-button-svg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover .contact-button-svg {
+  filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.4));
+  transform: translateY(4px) scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .contact-button {
+    top: -15px;                      /* slightly less aggressive on small screens */
+    transform: translateX(-50%);
+    width: 64px;                     /* optional: tiny bit smaller on mobile */
+    height: 74px;
+  }
+
+  .contact-button-svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Modern phones - dynamic island, notch, gesture bar */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .contact-button {
+    top: calc(-20px + env(safe-area-inset-top));
+  }
+}
+/* Double border classes */
+.button-outer {
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+}
+
+.button-inner {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 1.5;
+}
+
+.contact-button:hover .button-outer {
+  stroke: rgba(59, 130, 246, 0.5);
+}
+
+.contact-button:hover .button-inner {
+  stroke: rgba(59, 130, 246, 0.7);
+}
+
+/* Hover text */
+.contact-hover-text {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-button:hover .contact-hover-text {
+  opacity: 1;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--text);
+  display: block;
+  pointer-events: auto;
+  font-family: var(--font-headline);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  display: block;
+  pointer-events: auto;
+}
+

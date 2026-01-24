@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY client/package.json client/package-lock.json* ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY client/ ./
+
+EXPOSE 3000
+
+# Use a startup script that ensures dependencies are available
+CMD ["sh", "-c", "npm install && npm run dev -- --host"]
+
