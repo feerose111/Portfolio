@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import StoryMode from './components/modes/StoryMode'
+import StoryMode from './components/modes/StoryMode/StoryMode'
 import ProjectsMode from './components/modes/ProjectsMode'
 import ConnectMode from './components/modes/ConnectMode'
 import ContactMode from './components/modes/ContactMode'

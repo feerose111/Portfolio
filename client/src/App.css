@@ -1,26 +1,27 @@
+/* App.css – keep only layout, remove visual styles */
+
 .app {
   width: 100%;
   min-height: 100vh;
-  background-color: #12263A;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 .mode-layer {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;               
   overflow: auto;
 }
 
+/* Scroll lock when overlay is active */
 body.overlay-active {
   overflow: hidden;
+  touch-action: none;     /* better mobile experience */
 }
 
+/* Reset only what's needed */
 body {
-  overscroll-behavior: none;
   margin: 0;
   padding: 0;
+  overscroll-behavior: none;
 }

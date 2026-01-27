@@ -1,0 +1,122 @@
+/* Scroll to Top Button - Backup CSS (inline styles take priority) */
+
+.scroll-to-top-btn {
+    /* Positioning - CRITICAL */
+    position: fixed !important;
+    bottom: 40px !important;
+    right: 40px !important;
+    z-index: 999999 !important;
+    
+    /* Size */
+    width: 56px !important;
+    height: 56px !important;
+    
+    /* Appearance */
+    background: #3b82f6 !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4) !important;
+    
+    /* Layout */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Interaction */
+    cursor: pointer !important;
+    
+    /* Transitions */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  }
+  
+  /* Visible state */
+  .scroll-to-top-btn.is-visible {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Hidden state */
+  .scroll-to-top-btn:not(.is-visible) {
+    opacity: 0 !important;
+    transform: scale(0.8) translateY(20px) !important;
+    pointer-events: none !important;
+  }
+  
+  /* Hover state (CSS backup) */
+  .scroll-to-top-btn:hover {
+    background: #2563eb !important;
+    box-shadow: 0 6px 28px rgba(59, 130, 246, 0.5) !important;
+  }
+  
+  /* Active state */
+  .scroll-to-top-btn:active {
+    transform: scale(0.95) !important;
+  }
+  
+  /* Icon styling */
+  .scroll-to-top-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) !important;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .scroll-to-top-btn {
+      bottom: 24px !important;
+      right: 24px !important;
+      width: 48px !important;
+      height: 48px !important;
+    }
+    
+    .scroll-to-top-btn svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .scroll-to-top-btn {
+      bottom: 20px !important;
+      right: 20px !important;
+      width: 44px !important;
+      height: 44px !important;
+    }
+    
+    .scroll-to-top-btn svg {
+      width: 18px !important;
+      height: 18px !important;
+    }
+  }
+  
+  /* Ensure button stays on top of everything */
+  @media print {
+    .scroll-to-top-btn {
+      display: none !important;
+    }
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-to-top-btn {
+      transition: opacity 0.3s ease !important;
+    }
+    
+    .scroll-to-top-btn,
+    .scroll-to-top-btn:hover,
+    .scroll-to-top-btn:active {
+      transform: none !important;
+    }
+  }
+  
+  /* Force visibility for debugging - remove after confirming it works */
+  /* Uncomment this temporarily if you still can't see the button */
+  /*
+  .scroll-to-top-btn {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: red !important;
+  }
+  */
