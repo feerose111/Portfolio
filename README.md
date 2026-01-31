@@ -51,13 +51,13 @@ portfolio/
    ```
 
 4. **Access the application**:
-   - Frontend: http://localhost:3000
+   - Frontend: http://localhost:3001
    - Backend API: http://localhost:5000
    - MongoDB: localhost:27017
 
 ## Services
 
-- **Frontend**: React app with Vite running on port 3000
+- **Frontend**: React app with Vite running on port 3001
 - **Backend**: Express API running on port 5000
 - **Database**: MongoDB running on port 27017
 

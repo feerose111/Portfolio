@@ -5,7 +5,7 @@ import './ContactMode.css'
  * ContactMode Component
  * 
  * Contact form mode activated by swiping down from top.
- * Slide-down panel overlay.
+ * Slide-down panel overlay with modern dark design.
  * Exit by swiping up.
  */
 const ContactMode = () => {
@@ -18,28 +18,68 @@ const ContactMode = () => {
       transition={{ type: 'spring', stiffness: 120, damping: 22 }}
     >
       <div className="contact-content">
-        <h1 className="contact-heading">Get in Touch</h1>
-        <form className="contact-form">
-          <input
-            type="text"
-            placeholder="Name"
-            className="contact-input"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="contact-input"
-          />
-          <textarea
-            placeholder="Message"
-            className="contact-textarea"
-            rows="5"
-          />
+        <div className="contact-header">
+          <motion.h1 
+            className="contact-heading"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Let's Connect
+          </motion.h1>
+          <motion.p 
+            className="contact-subheading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Drop me a message and I'll get back to you soon
+          </motion.p>
+        </div>
+        
+        <motion.form 
+          className="contact-form"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="contact-input"
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="contact-input"
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <textarea
+              placeholder="Your Message"
+              className="contact-textarea"
+              rows="5"
+              required
+            />
+          </div>
+          
           <button type="submit" className="contact-submit">
-            Send Message
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4.5 10H15.5M15.5 10L10.5 5M15.5 10L10.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
-        </form>
+        </motion.form>
       </div>
+      
+      <div className="contact-curtain-edge"></div>
     </motion.div>
   )
 }
