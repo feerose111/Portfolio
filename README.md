@@ -4,101 +4,75 @@ Portfolio website
 =======
 # Portfolio Website
 
-A full-stack portfolio website built with React (Vite) frontend, Node.js/Express backend, and MongoDB database.
+A clean, modern portfolio website built with React and Vite, ready for deployment on Vercel.
 
 ## Project Structure
 
 ```
 portfolio/
-├── client/                 # React frontend (Vite)
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/         # Images, icons
-│   │   ├── components/     # Reusable UI (Header, ProjectCard, etc.)
-│   │   ├── pages/          # Home, About, Projects, Contact
-│   │   ├── hooks/          # Custom hooks (useScroll, useMouse)
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── package.json
-│
-├── server/                 # Node.js + Express API
-│   ├── controllers/        # Route logic
-│   ├── models/             # MongoDB schemas
-│   ├── routes/             # API routes
-│   ├── middleware/         # Auth, error handling
-│   ├── config/             # DB connection
-│   ├── .env.example
-│   └── server.js
-│
-├── docker-compose.yml      # Defines multi-container setup
-├── Dockerfile.client       # For React app
-├── Dockerfile.server       # For Node.js app
+├── public/                 # Static assets
+│   ├── profile.jpg         # Profile image
+│   ├── resume.pdf          # Resume download
+│   └── vite.svg
+├── src/
+│   ├── components/         # React components
+│   │   ├── layout/         # Header and layout components
+│   │   └── sections/       # Page sections (Hero, About, etc.)
+│   ├── contexts/           # React contexts (Theme)
+│   ├── pages/              # Main pages (Home, Story, Projects, Contact)
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── package.json
+├── vite.config.js
 └── README.md
 ```
 
-## Quick Start with Docker
+## Quick Start
 
-1. **Make sure Docker and Docker Compose are installed**
-
-2. **Create environment file for server**:
+1. **Install dependencies**:
    ```bash
-   cp server/.env.example server/.env
+   npm install
    ```
 
-3. **Build and run all services**:
+2. **Run development server**:
    ```bash
-   docker-compose up --build
+   npm run dev
    ```
 
-4. **Access the application**:
-   - Frontend: http://localhost:3001
-   - Backend API: http://localhost:5000
-   - MongoDB: localhost:27017
+3. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-## Services
+4. **Preview production build**:
+   ```bash
+   npm run preview
+   ```
 
-- **Frontend**: React app with Vite running on port 3001
-- **Backend**: Express API running on port 5000
-- **Database**: MongoDB running on port 27017
+## Deployment
 
-## Development
+This project is optimized for Vercel deployment:
 
-### Running without Docker
+- Build output directory: `dist` (Vite default)
+- Static assets in `public/` directory
+- No server-side dependencies
+- Ready for automatic deployment detection
 
-#### Frontend:
-```bash
-cd client
-npm install
-npm run dev
-```
+## Features
 
-#### Backend:
-```bash
-cd server
-npm install
-# Make sure MongoDB is running locally or update MONGODB_URI in .env
-npm start
-```
-
-## API Endpoints
-
-### Projects
-- `GET /api/projects` - Get all projects
-- `GET /api/projects/:id` - Get a single project
-- `POST /api/projects` - Create a new project
-- `PUT /api/projects/:id` - Update a project
-- `DELETE /api/projects/:id` - Delete a project
-
-### Contact
-- `GET /api/contact` - Get all contact messages
-- `POST /api/contact` - Create a new contact message
-- `DELETE /api/contact/:id` - Delete a contact message
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Dark Mode**: Theme switching with context API
+- **Smooth Navigation**: React Router with smooth scrolling
+- **Modern UI**: Clean, professional design with animations
+- **Performance Optimized**: Vite build system for fast loading
 
 ## Tech Stack
 
-- **Frontend**: React, Vite, React Router
-- **Backend**: Node.js, Express
-- **Database**: MongoDB, Mongoose
-- **Containerization**: Docker, Docker Compose
+- **Frontend**: React 18, Vite
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
+- **Animations**: Framer Motion
+- **Icons**: React Icons
 
 >>>>>>> 85503a7 (initial commit)

@@ -26,7 +26,7 @@ export default function Hero() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-xl scale-110"></div>
               <img
-                src="../../../image/profile.jpg"
+                src="/profile.jpg"
                 alt="Firoj Raut"
                 className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-xl ring-4 ring-white/80 dark:ring-gray-700/80 relative z-10"
               />
