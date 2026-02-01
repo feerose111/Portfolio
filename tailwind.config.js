@@ -8,43 +8,67 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Light theme: Warm Teal, Dark theme: Neural Violet
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          DEFAULT: '#0F766E',  // Warm Teal (light mode)
+          dark: '#7c3aed'      // Neural Violet (dark mode)
         },
-        secondary: {
-          50: '#fdf4ff',
-          100: '#fae8ff',
-          200: '#f5d0fe',
-          300: '#f0abfc',
-          400: '#e879f9',
-          500: '#d946ef',
-          600: '#c026d3',
-          700: '#a21caf',
-          800: '#86198f',
-          900: '#701a75',
+        accent: {
+          DEFAULT: '#14B8A6',  // Teal accent (light mode)
+          dark: '#a78bfa'      // Purple accent (dark mode)
         },
-        neutral: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
-        }
+        light: {
+          DEFAULT: '#5EEAD4',  // Light teal
+          dark: '#c4b5fd'      // Light purple
+        },
+        tint: {
+          DEFAULT: '#CCFBF1',  // Very light teal
+          dark: '#1e1b4b'      // Dark purple
+        },
+        'tint-text': {
+          DEFAULT: '#0F766E',
+          dark: '#a78bfa'
+        },
+        'body-main': {
+          DEFAULT: '#1e293b',
+          dark: '#e2e8f0'
+        },
+        'body-primary': {
+          DEFAULT: '#334155',
+          dark: '#cbd5e1'
+        },
+        'body-muted': {
+          DEFAULT: '#94a3b8',
+          dark: '#5a6b82'
+        },
+        subtitle: {
+          DEFAULT: '#475569',
+          dark: '#8fa4be'
+        },
+        headings: {
+          DEFAULT: '#0F766E',
+          dark: '#ffffff'
+        },
+        'skills-band': {
+          DEFAULT: '#e8fdf4',
+          dark: '#0f1322'
+        },
+        'contact-band': {
+          DEFAULT: '#d1fae5',
+          dark: '#1a1533'
+        },
+        'page-bg': {
+          DEFAULT: '#F0FDF4',
+          dark: '#0a0e1a'
+        },
+        'card-bg': {
+          DEFAULT: '#ffffff',
+          dark: '#111827'
+        },
+        'card-border': {
+          DEFAULT: '#CCFBF1',
+          dark: '#1f2a4a'
+        },
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -71,6 +95,7 @@ export default {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
         'bounce-slow': 'bounce 2s infinite',
+        'scroll': 'scroll 20s linear infinite',
       },
       keyframes: {
         float: {
@@ -88,6 +113,10 @@ export default {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         }
       },
       backdropBlur: {
@@ -116,7 +145,30 @@ export default {
           display: '-webkit-box',
           '-webkit-box-orient': 'vertical',
           '-webkit-line-clamp': '3',
-        }
+        },
+        '.text-gradient-hero': {
+          background: 'linear-gradient(135deg, #ffffff 0%, #c4b5fd 60%, #a78bfa 100%)',
+          '-webkit-background-clip': 'text',
+          'background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+        },
+        '.card-shadow': {
+          'box-shadow': '0 2px 10px rgba(0,0,0,0.05)',
+        },
+        '.card-shadow-dark': {
+          'box-shadow': '0 2px 10px rgba(0,0,0,0.28)',
+        },
+        '.header-glass': {
+          'background': 'rgba(240,253,244,0.82)',
+          'backdrop-filter': 'blur(14px)',
+          '-webkit-backdrop-filter': 'blur(14px)',
+        },
+        '.header-glass-dark': {
+          'background': 'rgba(10,14,26,0.75)',
+          'backdrop-filter': 'blur(14px)',
+          '-webkit-backdrop-filter': 'blur(14px)',
+        },
+        '.pause-animation': { 'animation-play-state': 'paused' }
       }
       addUtilities(newUtilities)
     }

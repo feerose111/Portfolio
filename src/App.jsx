@@ -7,7 +7,7 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-page-bg dark:bg-page-bg-dark transition-colors duration-300">
       <Header />
       <main>
         <Routes>

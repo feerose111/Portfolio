@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Footer from '../components/layout/Footer'
+import NeuralGrid from '../components/ui/NeuralGrid'
 
 export default function Projects() {
   const [filter, setFilter] = useState('all')
@@ -78,21 +80,31 @@ export default function Projects() {
     : projects.filter(project => project.category === filter)
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-16 min-h-screen bg-page-bg dark:bg-page-bg-dark">
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            My Projects
+      <section className="relative h-96 flex items-center justify-center py-20 px-4 overflow-hidden bg-page-bg dark:bg-page-bg-dark">
+        {/* Neural Grid Background */}
+        <NeuralGrid />
+        
+        {/* Clean gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-page-bg/80 via-card-bg/60 to-tint/80 dark:from-page-bg-dark/80 dark:via-card-bg-dark/60 dark:to-tint-dark/80" style={{ zIndex: 2 }}></div>
+        
+        {/* Subtle floating elements */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+        
+        <div className="relative max-w-6xl mx-auto text-center z-10" style={{ zIndex: 10 }}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-headings dark:text-headings-dark mb-6 leading-tight tracking-tight">
+            Featured <span className="bg-gradient-to-r from-primary dark:from-primary-dark to-accent dark:to-accent-dark bg-clip-text text-transparent">Works</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A collection of projects showcasing my skills in AI, web development, and data science
+          <p className="text-xl text-subtitle dark:text-subtitle-dark max-w-2xl mx-auto leading-relaxed">
+            A collection of projects showcasing skills in development and creative problem-solving
           </p>
         </div>
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 px-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <section className="py-8 px-4 bg-card-bg dark:bg-card-bg-dark border-b border-card-border dark:border-card-border-dark">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
@@ -101,8 +113,8 @@ export default function Projects() {
                 onClick={() => setFilter(category.id)}
                 className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                   filter === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    ? 'bg-primary dark:bg-primary-dark text-white shadow-lg'
+                    : 'bg-tint dark:bg-tint-dark text-body-primary dark:text-body-primary-dark hover:bg-accent/20 dark:hover:bg-accent-dark/20'
                 }`}
               >
                 {category.label}
@@ -119,7 +131,7 @@ export default function Projects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 dark:border-gray-700 group overflow-hidden"
+                className="bg-card-bg dark:bg-card-bg-dark rounded-xl card-shadow dark:card-shadow-dark hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-card-border dark:border-card-border-dark group overflow-hidden flex flex-col h-full"
               >
                 {/* Project Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center relative overflow-hidden">
@@ -131,39 +143,43 @@ export default function Projects() {
                   )}
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-bold text-headings dark:text-headings-dark mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors min-h-[60px] flex items-start">
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                  <p className="text-body-primary dark:text-body-primary-dark mb-4 leading-relaxed min-h-[80px] max-h-[100px] overflow-hidden text-ellipsis">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-6 min-h-[60px] items-start">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-full"
+                        className="px-3 py-1 bg-tint dark:bg-tint-dark text-tint-text dark:text-tint-text-dark text-sm rounded-full"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex gap-4">
-                    <a
-                      href={project.demoUrl}
-                      className="flex-1 bg-blue-600 text-white text-center py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                    >
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.codeUrl}
-                      className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-center py-2 px-4 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium"
-                    >
-                      View Code
-                    </a>
+                  <div className="flex gap-4 mt-auto">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        className="flex-1 bg-primary dark:bg-primary-dark text-white text-center py-2 px-4 rounded-lg hover:bg-accent dark:hover:bg-accent-dark transition-colors font-medium"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    {project.codeUrl && (
+                      <a
+                        href={project.codeUrl}
+                        className="flex-1 bg-tint dark:bg-tint-dark text-tint-text dark:text-tint-text-dark text-center py-2 px-4 rounded-lg hover:bg-card-bg dark:hover:bg-card-bg-dark transition-colors font-medium border border-card-border dark:border-card-border-dark"
+                      >
+                        View Code
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -172,13 +188,14 @@ export default function Projects() {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-xl text-gray-500 dark:text-gray-400">
+              <p className="text-xl text-body-muted dark:text-body-muted-dark">
                 No projects found in this category.
               </p>
             </div>
           )}
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

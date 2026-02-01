@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { 
-  FaGraduationCap, 
-  FaBook, 
-  FaRobot, 
-  FaRocket, 
-  FaBriefcase, 
-  FaBolt,
-  FaArrowRight,
-  FaCode
-} from 'react-icons/fa'
+  GraduationCap, 
+  Book, 
+  Bot, 
+  Rocket, 
+  Briefcase, 
+  Zap,
+  ArrowRight,
+  Code
+} from 'lucide-react'
 
 export default function Story() {
   const [visibleChapters, setVisibleChapters] = useState(new Set())
@@ -20,48 +20,48 @@ export default function Story() {
       year: '2018-2021',
       title: 'Foundation Years',
       description: 'Completed +2 Computer Science at Arniko Awasiya Secondary School, Biratnagar. First exposure to programming and computational thinking.',
-      icon: FaGraduationCap,
-      color: 'from-blue-500 to-cyan-500'
+      icon: GraduationCap,
+      color: 'from-orange-500 to-amber-500'
     },
     {
       id: 2,
       year: '2021-2025',
       title: 'BSc. CSIT Journey',
       description: 'Pursuing BSc. Computer Science & Information Technology at Ambition College, Mid-Baneswor, Kathmandu. Deep dive into algorithms, data structures, and software engineering.',
-      icon: FaBook,
-      color: 'from-purple-500 to-pink-500'
+      icon: Book,
+      color: 'from-teal-500 to-cyan-500'
     },
     {
       id: 3,
       year: '2022-2023',
       title: 'AI Discovery',
       description: 'Discovered passion for artificial intelligence and machine learning. Started building projects with Python, TensorFlow, and PyTorch.',
-      icon: FaRobot,
-      color: 'from-green-500 to-teal-500'
+      icon: Bot,
+      color: 'from-amber-500 to-yellow-500'
     },
     {
       id: 4,
       year: '2024',
       title: 'Advanced Projects',
       description: 'Built sophisticated AI applications: Facial Emotion Recognition with CNN, Heart Disease Prediction, Parkinson\'s Detection, and Wine Quality Analysis.',
-      icon: FaRocket,
-      color: 'from-orange-500 to-red-500'
+      icon: Rocket,
+      color: 'from-sky-500 to-blue-500'
     },
     {
       id: 5,
       year: '2025',
       title: 'Professional Experience',
       description: 'AI/ML Intern at eSewa Pvt. Ltd. Built and deployed ML models to production with FastAPI, created scalable pipelines, and optimized models for real-time inference.',
-      icon: FaBriefcase,
-      color: 'from-indigo-500 to-purple-500'
+      icon: Briefcase,
+      color: 'from-orange-500 to-red-500'
     },
     {
       id: 6,
       year: '2025',
       title: 'Innovation & Impact',
       description: 'Created ASAPP (AI-Powered Project Planning Assistant) and Semantic AI Search System. Focus on turning research ideas into deployable AI products.',
-      icon: FaBolt,
-      color: 'from-yellow-500 to-orange-500'
+      icon: Zap,
+      color: 'from-teal-500 to-emerald-500'
     }
   ]
 
@@ -85,14 +85,17 @@ export default function Story() {
   }, [])
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-16 min-h-screen bg-page-bg dark:bg-page-bg-dark">
       {/* Hero Section */}
       <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 md:mb-8">
-            My <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Journey</span>
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-1 h-5 bg-gradient-to-b from-primary dark:from-primary-dark to-accent dark:to-accent-dark rounded-full mr-4 transition-all duration-300 hover:h-7"></div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-headings dark:text-headings-dark mb-6 md:mb-8 leading-tight tracking-tight">
+              My <span className="bg-gradient-to-r from-primary dark:from-primary-dark to-accent dark:to-accent-dark bg-clip-text text-transparent">Journey</span>
+            </h1>
+          </div>
+          <p className="text-lg md:text-xl lg:text-2xl text-subtitle dark:text-subtitle-dark max-w-3xl mx-auto leading-relaxed">
             From curious student to AI-focused developer - the story of continuous learning, 
             growth, and turning ideas into intelligent solutions.
           </p>
@@ -101,27 +104,10 @@ export default function Story() {
 
       {/* Timeline */}
       <section className="py-12 md:py-20 px-4 md:px-6 relative">
-        {/* Subtle Progress Indicator - Right Side */}
-        <div className="fixed right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30 hidden lg:block">
-          <div className="flex flex-col space-y-2">
-            {journeyChapters.map((chapter) => (
-              <div
-                key={chapter.id}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  visibleChapters.has(chapter.id)
-                    ? 'bg-blue-500 scale-125'
-                    : 'bg-gray-300 dark:bg-gray-600'
-                }`}
-                title={chapter.title}
-              />
-            ))}
-          </div>
-        </div>
-
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-gradient-to-b from-blue-400 via-indigo-500 to-purple-600 transform md:-translate-x-0.5 rounded-full"></div>
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-gradient-to-b from-primary dark:from-primary-dark via-accent dark:via-accent-dark to-light dark:to-light-dark transform md:-translate-x-0.5 rounded-full"></div>
             
             <div className="space-y-12 md:space-y-20">
               {journeyChapters.map((chapter, index) => {
@@ -130,23 +116,26 @@ export default function Story() {
                   <div 
                     key={chapter.id}
                     data-chapter-id={chapter.id}
-                    className={`relative transition-all duration-700 ${
+                    className={`relative transition-all duration-300 ${
                       visibleChapters.has(chapter.id) 
                         ? 'opacity-100 translate-y-0' 
-                        : 'opacity-0 translate-y-8'
+                        : 'opacity-0 translate-y-2'
                     }`}
+                    style={{
+                      transform: visibleChapters.has(chapter.id) ? 'translateY(-4px)' : 'translateY(8px)'
+                    }}
                   >
                     <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                       {/* Timeline dot with icon */}
                       <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-10">
-                        <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r ${chapter.color} rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-900`}>
+                        <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r ${chapter.color} rounded-full flex items-center justify-center`}>
                           <IconComponent className="text-white text-lg md:text-2xl" />
                         </div>
                       </div>
                       
                       {/* Content */}
                       <div className={`ml-20 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-16' : 'md:ml-16'}`}>
-                        <div className="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl p-6 md:p-8 shadow-lg md:shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-xl md:hover:shadow-2xl hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-300">
+                        <div className="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl p-6 md:p-8 hover:-translate-y-3 hover:scale-105 transition-all duration-200">
                           <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-6">
                             <span className={`text-xs md:text-sm font-bold bg-gradient-to-r ${chapter.color} bg-clip-text text-transparent px-3 md:px-4 py-1 md:py-2 bg-gray-50 dark:bg-gray-700 rounded-full mb-2 md:mb-0 self-start`}>
                               {chapter.year}
@@ -176,16 +165,16 @@ export default function Story() {
       </section>
 
       {/* What's Next Section */}
-      <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+      <section className="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-r from-tint dark:from-tint-dark to-card-bg dark:to-card-bg-dark">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 md:mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6">
-              <FaCode className="text-white text-2xl md:text-3xl" />
+            <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-primary dark:from-primary-dark to-accent dark:to-accent-dark rounded-full mb-6">
+              <Code className="text-white text-2xl md:text-3xl" />
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-headings dark:text-headings-dark mb-4 md:mb-6 leading-tight tracking-tight">
               The Story Continues...
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-body-primary dark:text-body-primary-dark max-w-2xl mx-auto leading-relaxed">
               Every line of code is a new chapter. Every project, a plot twist. 
               The best stories are written in collaboration—let's write the next one together.
             </p>
@@ -194,14 +183,14 @@ export default function Story() {
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
             <Link
               to="/projects"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-base md:text-lg rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary dark:from-primary-dark to-accent dark:to-accent-dark text-white font-semibold text-base md:text-lg rounded-xl hover:from-accent dark:hover:from-accent-dark hover:to-light dark:hover:to-light-dark transition-all duration-300 hover:-translate-y-2"
             >
               See What I've Built
-              <FaArrowRight className="ml-2 text-sm md:text-base" />
+              <ArrowRight className="ml-2 text-sm md:text-base" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-semibold text-base md:text-lg border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-card-bg dark:bg-card-bg-dark text-headings dark:text-headings-dark font-semibold text-base md:text-lg rounded-xl hover:bg-accent/10 dark:hover:bg-accent-dark/10 transition-all duration-300 hover:-translate-y-2"
             >
               Let's Write Together
             </Link>

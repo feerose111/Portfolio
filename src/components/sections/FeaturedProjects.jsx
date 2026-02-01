@@ -1,75 +1,113 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import ProjectModal from '../ui/ProjectModal'
 
 export default function FeaturedProjects() {
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = (project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
+  }
   const featuredProjects = [
     {
       id: 1,
       title: "ASAPP – AI-Powered Project Planning & Assistant",
       description: "AI-powered project planning assistant built with FastAPI, Streamlit, ChromaDB, and LangChain. Deployed on Render with Docker containerization.",
       technologies: ["FastAPI", "Streamlit", "ChromaDB", "LangChain", "Docker", "Render"],
-      featured: true
+      is_featured: true,
+      demoUrl: "#",
+      codeUrl: "#"
     },
     {
       id: 2,
       title: "Semantic AI Search System",
       description: "Advanced search system using LangChain, Milvus, Elasticsearch, Kafka, and Redis for intelligent content discovery with real-time processing.",
       technologies: ["LangChain", "Milvus", "Elasticsearch", "Kafka", "Redis", "FastAPI"],
-      featured: true
+      is_featured: true,
+      demoUrl: "#",
+      codeUrl: "#"
     },
     {
       id: 3,
       title: "Facial Emotion Recognition Using CNN",
       description: "CNN-based system for real-time emotion detection with song mapping using depthwise separable convolutions for efficient processing.",
       technologies: ["Python", "Django", "CNN", "TensorFlow", "OpenCV"],
-      featured: true
+      is_featured: true,
+      demoUrl: "#",
+      codeUrl: "#"
     }
   ]
 
   return (
-    <section id="featured-projects" className="py-20 px-6">
+    <section id="featured-projects" className="py-20 px-6 bg-page-bg dark:bg-page-bg-dark">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-1 h-5 bg-gradient-to-b from-primary dark:from-primary-dark to-accent dark:to-accent-dark rounded-full mr-4 transition-all duration-300 hover:h-7"></div>
+            <h2 className="text-4xl font-bold text-headings dark:text-headings-dark">
+              Featured Projects
+            </h2>
+          </div>
+          <p className="text-lg text-subtitle dark:text-subtitle-dark max-w-2xl mx-auto">
             A selection of my most impactful AI and machine learning projects
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {featuredProjects.slice(0, 2).map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {featuredProjects.filter(p => p.is_featured).map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700 group"
+              className="relative bg-card-bg dark:bg-card-bg-dark rounded-2xl p-6 hover:bg-accent/5 dark:hover:bg-accent-dark/5 transition-all duration-300 hover:-translate-y-1 group overflow-hidden cursor-pointer"
+              onClick={() => openModal(project)}
             >
+              {/* Gradient border glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 dark:from-primary-dark/10 via-accent/10 dark:via-accent-dark/10 to-light/10 dark:to-light-dark/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              
               <div className="mb-6">
-                <div className="w-full h-40 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl mb-6 flex items-center justify-center border border-blue-100 dark:border-blue-800/30">
-                  <span className="text-5xl">🤖</span>
+                <div className="w-full h-32 bg-gradient-to-br from-tint dark:from-tint-dark to-tint/50 dark:to-tint-dark/50 rounded-xl mb-4 flex items-center justify-center border border-card-border dark:border-card-border-dark">
+                  <span className="text-4xl">🤖</span>
                 </div>
               </div>
               
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="text-xl font-bold text-headings dark:text-headings-dark mb-3 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
                 {project.title}
               </h3>
               
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+              <p className="text-body-primary dark:text-body-primary-dark mb-4 leading-relaxed text-sm min-h-[120px] flex items-start">
                 {project.description}
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.technologies.map((tech) => (
+              <div className="flex flex-wrap gap-2 mb-6 min-h-[60px] items-start">
+                {project.technologies.slice(0, 3).map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-full font-medium"
+                    className="px-2 py-1 bg-tint dark:bg-tint-dark text-tint-text dark:text-tint-text-dark text-xs rounded-full font-medium"
                   >
                     {tech}
                   </span>
                 ))}
+                {project.technologies.length > 3 && (
+                  <span className="px-2 py-1 bg-tint dark:bg-tint-dark text-tint-text dark:text-tint-text-dark text-xs rounded-full font-medium">
+                    +{project.technologies.length - 3}
+                  </span>
+                )}
               </div>
               
-              <div className="flex gap-4">
-                <button className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors">
+              <div className="flex gap-2">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    openModal(project)
+                  }}
+                  className="flex-1 text-primary dark:text-primary-dark hover:text-accent dark:hover:text-accent-dark font-semibold text-sm transition-colors"
+                >
                   View Details →
                 </button>
               </div>
@@ -77,44 +115,10 @@ export default function FeaturedProjects() {
           ))}
         </div>
 
-        {/* Third project - full width */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 dark:border-gray-700 group mb-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {featuredProjects[2].title}
-              </h3>
-              
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                {featuredProjects[2].description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {featuredProjects[2].technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm rounded-full font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              
-              <button className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors">
-                View Details →
-              </button>
-            </div>
-            
-            <div className="w-full h-64 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
-              <span className="text-6xl">🎭</span>
-            </div>
-          </div>
-        </div>
-
         <div className="text-center">
           <Link
             to="/projects"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary dark:from-primary-dark to-accent dark:to-accent-dark text-white font-semibold rounded-xl hover:from-accent dark:hover:from-accent-dark hover:to-light dark:hover:to-light-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
             View All Projects
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,6 +127,12 @@ export default function FeaturedProjects() {
           </Link>
         </div>
       </div>
+
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </section>
   )
 }
